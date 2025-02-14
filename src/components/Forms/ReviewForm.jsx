@@ -86,4 +86,4 @@ const ReviewForm = ({ roomId, onSuccess }) => {
   );
 };
 
-export { BookingForm, LoginForm, RegisterForm, ReviewForm };
+export default ReviewForm;
