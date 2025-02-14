@@ -4,6 +4,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { RefreshCw, ListFilter } from "lucide-react";
 
+// eslint-disable-next-line react/prop-types
 const RoomFilters = ({ onFilterChange, minPrice = 0, maxPrice = 1000 }) => {
   const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
   const [isExpanded, setIsExpanded] = useState(false);

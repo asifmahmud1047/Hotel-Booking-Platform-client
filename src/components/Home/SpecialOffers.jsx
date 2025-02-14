@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const SpecialOffers = () => {
   const [showModal, setShowModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [offers, setOffers] = useState([
     {
       id: 1,

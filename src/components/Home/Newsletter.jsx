@@ -22,6 +22,7 @@ const Newsletter = () => {
         message: "Thank you for subscribing to our newsletter!",
       });
       setEmail("");
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setStatus({
         type: "error",
