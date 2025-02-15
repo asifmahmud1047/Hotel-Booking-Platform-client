@@ -101,6 +101,7 @@ const BookingCard = ({ booking, onUpdate }) => {
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h3 className="text-lg font-semibold mb-4">Write a Review</h3>
             <ReviewForm
+              // eslint-disable-next-line react/prop-types
               roomId={booking.room._id}
               onSuccess={() => {
                 setIsReviewModalOpen(false);

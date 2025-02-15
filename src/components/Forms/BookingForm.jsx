@@ -76,3 +76,5 @@ const BookingForm = ({ room, onSuccess }) => {
     </div>
   );
 };
+
+export default BookingForm;
