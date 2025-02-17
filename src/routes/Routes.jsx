@@ -1,58 +1,48 @@
-import { createBrowserRouter } from 'react-router-dom';
-import MainLayout from '../layouts/MainLayout';
-import Home from '../pages/Home';
-import Rooms from '../pages/Rooms';
-import RoomDetails from '../pages/RoomDetails';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import MyBookings from '../pages/Dashboard/MyBookings';
-import ErrorPage from '../pages/ErrorPage';
-import PrivateRoute from './PrivateRoute';
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import Home from "../pages/Home";
+import Rooms from "../pages/Rooms";
+import RoomDetails from "../pages/RoomDetails";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import MyBookings from "../pages/Dashboard/MyBookings";
+import ErrorPage from "../pages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
-const router = createBrowserRouter([
+export const routes = createBrowserRouter([
   {
-    path: '/',
-    element: <MainLayout />,
+    path: "/",
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <Home />
+        index: true,
+        element: <Home />,
       },
       {
-        path: '/rooms',
+        path: "rooms",
         element: <Rooms />,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/rooms`)
       },
       {
-        path: '/rooms/:id',
+        path: "rooms/:id",
         element: <RoomDetails />,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/rooms/${params.id}`)
       },
       {
-        path: '/login',
-        element: <Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path: '/register',
-        element: <Register />
+        path: "register",
+        element: <Register />,
       },
       {
-        path: '/dashboard',
+        path: "my-bookings",
         element: (
           <PrivateRoute>
             <MyBookings />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/bookings/${params.email}`, {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('access-token')}`
-          }
-        })
-      }
-    ]
-  }
+      },
+    ],
+  },
 ]);
-
-export default router;
-

@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Shared/Navbar";
 import Footer from "./components/Shared/Footer";
+import "./index.css";
 
 const App = () => {
   return (

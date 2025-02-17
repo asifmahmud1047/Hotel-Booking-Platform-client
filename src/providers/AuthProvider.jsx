@@ -143,3 +143,113 @@ AuthProvider.propTypes = {
 };
 
 export default AuthProvider;
+
+
+
+
+// import { createContext, useEffect, useState } from "react";
+// import {
+//   GoogleAuthProvider,
+//   createUserWithEmailAndPassword,
+//   getAuth,
+//   onAuthStateChanged,
+//   signInWithEmailAndPassword,
+//   signInWithPopup,
+//   signOut,
+//   updateProfile,
+// } from "firebase/auth";
+// import axios from "axios";
+// import { app  from "../config/firebase.config";
+
+// // Create the context with a default value
+// export const AuthContext = createContext({
+//   user: null,
+//   loading: true,
+//   createUser: () => Promise.resolve(),
+//   signIn: () => Promise.resolve(),
+//   signInWithGoogle: () => Promise.resolve(),
+//   updateUserProfile: () => Promise.resolve(),
+//   logOut: () => Promise.resolve(),
+// });
+
+// const auth = getAuth(app);
+// const googleProvider = new GoogleAuthProvider();
+
+// const AuthProvider = ({ children }) => {
+//   const [user, setUser] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   // Create user with email and password
+//   const createUser = (email, password) => {
+//     setLoading(true);
+//     return createUserWithEmailAndPassword(auth, email, password);
+//   };
+
+//   // Sign in with email and password
+//   const signIn = (email, password) => {
+//     setLoading(true);
+//     return signInWithEmailAndPassword(auth, email, password);
+//   };
+
+//   // Sign in with Google
+//   const signInWithGoogle = () => {
+//     setLoading(true);
+//     return signInWithPopup(auth, googleProvider);
+//   };
+
+//   // Update user profile
+//   const updateUserProfile = (name, photo) => {
+//     return updateProfile(auth.currentUser, {
+//       displayName: name,
+//       photoURL: photo,
+//     });
+//   };
+
+//   // Sign out
+//   const logOut = () => {
+//     setLoading(true);
+//     return signOut(auth);
+//   };
+
+//   // Observer for user state changes
+//   useEffect(() => {
+//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+//       setUser(currentUser);
+//       console.log("Current user:", currentUser);
+
+//       // Get and set token
+//       if (currentUser) {
+//         // Uncomment and update with your actual API endpoint
+//         // axios.post('http://localhost:5000/api/v1/auth/jwt', { email: currentUser.email })
+//         //     .then(data => {
+//         //         localStorage.setItem('access-token', data.data.token);
+//         //         setLoading(false);
+//         //     })
+//         setLoading(false);
+//       } else {
+//         localStorage.removeItem("access-token");
+//         setLoading(false);
+//       }
+//     });
+
+//     return () => {
+//       unsubscribe();
+//     };
+//   }, []);
+
+//   const authInfo = {
+//     user,
+//     loading,
+//     createUser,
+//     signIn,
+//     signInWithGoogle,
+//     updateUserProfile,
+//     logOut,
+//   };
+
+//   return (
+//     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+//   );
+// };
+
+// export default AuthProvider;
